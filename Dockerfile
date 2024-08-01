@@ -4,13 +4,15 @@ FROM ubuntu:24.04
 
 RUN apt-get update
 
+RUN apt-get install python3 -y
+
 RUN echo $(python3 -m site --user-base)
 
 COPY requirements.txt .
 
 ENV PATH /home/.local/bin:${PATH}
 
-RUN apt-get install python3-xyz && pip install -r requirements.txt
+RUN apt-get install python3-pip -y && pip install -r requirements.txt
 
 COPY . .
 
