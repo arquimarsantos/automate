@@ -1,11 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.alert import Alert
-from selenium.webdriver.common.service import Service
-from webdriver-manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from flask import Flask, request
+import os
 import time
 import random
 from datetime import datetime
@@ -16,12 +16,14 @@ def automate():
     while True:
         try:
             options = webdriver.ChromeOptions()
+            options.set_capability("loggingPrefs", {'performance': 'ALL'})
             options.add_argument("--disable-blink-features=AutomationControlled")
             options.add_experimental_option("excludeSwitches", ["enable-automation"])
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
-            options.add_argument("--headless=new")
-            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
+            options.add_argument("--headless")
+            service = ChromeService(executable_path'/usr/local/bin/chromedriver')
+            driver = webdriver.Chrome(service=service, options=options)
             dtime = datetime.now()
             dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
             groupNames = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
@@ -105,7 +107,7 @@ def automate():
             automate()
 
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/home', methods = ['GET', 'POST'])
 def home():
     if(request.method == 'GET'):
         return automate()
