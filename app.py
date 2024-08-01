@@ -17,6 +17,7 @@ def automate():
     while True:
         try:
             options = webdriver.ChromeOptions()
+            options.binary_location = "/usr/bin/google-chrome"
             options.add_argument("--disable-blink-features=AutomationControlled")
             options.add_experimental_option("excludeSwitches", ["enable-automation"])
             options.add_argument("--no-sandbox")
