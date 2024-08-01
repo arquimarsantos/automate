@@ -20,7 +20,7 @@ def automate():
             options.add_argument("--disable-browser-side-navigation")
             options.add_argument("--disable-gpu")
             options.add_argument("--window-size=1920,1080")
-            driver = webdriver.Chrome(options=options, executable_path='/snap/bin/chromium.chromedriver')
+            driver = webdriver.Chrome(options=options)
             dtime = datetime.now()
             dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
             groupNames = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
