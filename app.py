@@ -108,6 +108,8 @@ def automate():
             automate()
 
 
+automate()
+
 @app.route('/home', methods = ['GET', 'POST'])
 def home():
     if(request.method == 'GET'):
