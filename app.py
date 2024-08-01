@@ -29,6 +29,7 @@ def automate():
             groupNames = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
             names = random.choice(groupNames)
             groupLink = "https://chat.whatsapp.com/HcggDDBEURG6jhillSbv7L"
+            print("Automação iniciada! - ", dt_string)
             driver.get("https://www.google.com")
             time.sleep(10)
             driver.find_element("xpath", '//*[@id="gb"]/div/div[2]/a').click()
