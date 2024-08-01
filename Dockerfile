@@ -1,13 +1,16 @@
-FROM ubuntu:24.04
+ARG PORT = 443
+FROM cypress/browser:latest
 
-ENV DISPLAY=":0" XAUTHORITY=/xauthority/.docker.xauth
+RUN apt-get install python3 -y
 
-RUN apt-get update && \
-DEBIAN_FRONTEND=noninteractive apt-get -y install chromium-browser && \
-apt-get clean && \
-apt-get autoclean && \
-snap install chromium && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-rm -rf /var/lib/apt/lists/*
+RUN echo $(python3 -m site --user-base)
 
-CMD sleep 5 && /usr/bin/chromium-browser --no-sandbox --disable-dev-shm-usage --disable-background-networking --disable-default-apps --disable-hang-monitor --disable-infobars --disable-popup-blocking --disable-prompt-on-repost --disable-sync --disable-web-resources --enable-logging --log-level=0 --no-first-run --password-store=basic --safebrowsing-disable-auto-update --use-mock-keychain --disable-gpu --disable-preconnect --disable-translate --dns-prefetch-disable --no-pings --start-maximized --mute-audio
+COPY requirements.txt .
+
+ENV PATH /home/.local/bin:${PATH}
+
+RUN apt-get update && apt-get install -y python3-pip && pip install -r requirements.txt
+
+COPY . .
+
+CMD uvicorn main:app --host 0.0.0.0 --port $PORT
