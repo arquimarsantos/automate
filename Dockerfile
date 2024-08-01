@@ -12,7 +12,7 @@ COPY requirements.txt .
 
 ENV PATH /home/.local/bin:${PATH}
 
-RUN apt-get install pipx -y && pipx install requirements.txt
+RUN apt-get install python3-pip -y && pip3 install requirements.txt
 
 COPY . .
 
