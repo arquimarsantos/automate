@@ -1,19 +1,14 @@
-ARG PORT=443
+FROM python:3.10
 
-FROM ubuntu:24.04
+WORKDIR /app
 
-RUN apt-get update
+COPY . /app
 
-RUN apt-get install python3 -y
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-RUN echo $(python3 -m site --user-base)
-
-COPY requirements.txt .
-
-ENV PATH /home/.local/bin:${PATH}
-
-RUN apt-get install python3-pip -y && python -m venv venv && source venv/bin/activate && pip3 install requirements.txt
-
-COPY . .
-
-CMD uvicorn main:app --host 0.0.0.0 --port $PORT
+RUN apt-get update && apt-get install -y wget unzip && \
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    apt install -y ./google-chrome-stable_current_amd64.deb && \
+    apt-get clean
+    
+CMD ["python", "app.py"]
