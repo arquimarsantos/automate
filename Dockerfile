@@ -6,6 +6,7 @@ RUN apt-get update && \
 DEBIAN_FRONTEND=noninteractive apt-get -y install chromium-browser && \
 apt-get clean && \
 apt-get autoclean && \
+snap install chromium && \
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
 rm -rf /var/lib/apt/lists/*
 
