@@ -21,7 +21,7 @@ def automate():
             options.add_experimental_option("excludeSwitches", ["enable-automation"])
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
-            options.add_argument("--headless")
+            options.add_argument("--headless=new")
             driver = webdriver.Chrome(options=options)
             dtime = datetime.now()
             dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
