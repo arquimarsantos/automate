@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.alert import Alert
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.service import Service
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
@@ -23,7 +23,7 @@ def automate():
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--headless")
-            driver = webdriver.Chrome(ChromeDriverManager().install(),options=options)
+            driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
             dtime = datetime.now()
             dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
             groupNames = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
