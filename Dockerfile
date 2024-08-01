@@ -12,7 +12,7 @@ COPY requirements.txt .
 
 ENV PATH /home/.local/bin:${PATH}
 
-RUN apt-get install pipx -y && pipx install -r requirements.txt
+RUN apt-get install pipx -y && pipx install requirements.txt
 
 COPY . .
 
