@@ -10,7 +10,7 @@ COPY requirements.txt .
 
 ENV PATH /home/.local/bin:${PATH}
 
-RUN pip install -r requirements.txt
+RUN apt-get install -y python3-pip && pip install -r requirements.txt
 
 COPY . .
 
