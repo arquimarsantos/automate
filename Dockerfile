@@ -1,5 +1,6 @@
 ARG PORT=443
-FROM docker.io/cypress/browser:latest
+
+docker pull cypress/browsers:latest
 
 RUN apt-get install python3 -y
 
