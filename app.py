@@ -89,6 +89,9 @@ def automate():
             automate()
 
 
+automate()
+
+
 @app.route('/')
 def index():
     return automate()
