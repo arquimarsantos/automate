@@ -11,4 +11,4 @@ RUN apt-get update && apt-get install -y wget unzip && \
     apt install -y ./google-chrome-stable_current_amd64.deb && \
     apt-get clean
     
-CMD uvicorn app:app --host 0.0.0.0 --port 443
+CMD ["gunicorn", "app:app"]
