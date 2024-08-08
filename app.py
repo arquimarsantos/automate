@@ -44,7 +44,7 @@ def automate():
             driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
             time.sleep(5)
             driver.get("https://www.google.com")
-            time.sleep(290)
+            time.sleep(10)
             with MailBox('imap.gmail.com').login(email, password) as mailbox:
                 for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                     time.sleep(10)
