@@ -1,17 +1,18 @@
 from selenium import webdriver
-from selenium.webdriver.common.alert import Alert
-from selenium.common.exceptions import NoAlertPresentException
 from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from flask import Flask, request
-import os
+from imap_tools import MailBox
+from urlextract import URLExtract
 import time
 import random
 from datetime import datetime
 
 app = Flask(__name__)
+email = "arquimarsx@gmail.com"
+password = "szgcbdzxgjkzggbq"
+group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
+group_link = "https://chat.whatsapp.com/KFxBPIgH2ad1Shi14KcJB2"
 
 def automate():
     while True:
@@ -19,109 +20,73 @@ def automate():
             options = webdriver.ChromeOptions()
             options.add_argument("--disable-blink-features=AutomationControlled")
             options.add_experimental_option("excludeSwitches", ["enable-automation"])
+            options.add_argument('--disable-gpu')
             options.add_argument("--no-sandbox")
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--headless")
-            options.add_argument("--window-size=1920,1080")
-            options.add_argument("--disable-background-timer-throttling")
-            options.add_argument("--disable-backgrounding-occluded-windows")
-            options.add_argument("--disable-breakpad")
-            options.add_argument("--disable-component-extensions-with-background-pages")
-            options.add_argument("--disable-extensions")
-            options.add_argument("--disable-features=TranslateUI,BlinkGenPropertyTrees")
-            options.add_argument("--disable-ipc-flooding-protection")
-            options.add_argument("--disable-renderer-backgrounding")
-            options.add_argument("--enable-features=NetworkService,NetworkServiceInProcess")
-            options.add_argument("--force-color-profile=srgb")
-            options.add_argument("--hide-scrollbars")
-            options.add_argument("--metrics-recording-only")
-            options.add_argument("--mute-audio")
-            service = Service(ChromeDriverManager().install())
-            driver = webdriver.Chrome(service=service, options=options)
+            options.add_argument("--start-maximized")
+            driver = webdriver.Chrome(options=options)
             dtime = datetime.now()
             dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
-            groupNames = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
-            names = random.choice(groupNames)
-            groupLink = "https://chat.whatsapp.com/HcggDDBEURG6jhillSbv7L"
+            names = random.choice(group_names)
             print("Automação iniciada! - ", dt_string)
-            driver.get("https://www.google.com")
-            time.sleep(10)
-            driver.find_element("xpath", '//*[@id="gb"]/div/div[2]/a').click()
-            driver.find_element("xpath", '//*[@id="identifierId"]').send_keys("arquimarsx@gmail.com")
-            time.sleep(20)
-            driver.find_element("xpath", '//*[@id="identifierNext"]/div/button/span').click()
-            time.sleep(10)
-            driver.find_element("xpath", '//*[@id="password"]/div[1]/div/div[1]/input').send_keys("13421822$$")
-            driver.find_element("xpath", '//*[@id="passwordNext"]/div/button/span').click()
-            time.sleep(10)
             driver.get("https://www.gruposwats.com")
             driver.find_element("xpath", '//*[@id="btnpublica"]').click()
             driver.find_element("xpath", '//*[@id="myDiv3"]/span[6]').click()
             driver.find_element("xpath", '/html/body/div[2]/div/div[1]/button').click()
             driver.find_element("xpath", '//*[@id="mailgrupo"]').click()
-            driver.find_element("xpath", '//*[@id="mailgrupo"]').send_keys("arquimarsx@gmail.com")
+            driver.find_element("xpath", '//*[@id="mailgrupo"]').send_keys(email)
             driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
-            time.sleep(5) 
+            time.sleep(5)
             driver.get("https://www.google.com")
-            time.sleep(300)
-            driver.get("https://mail.google.com/mail/u/0/#inbox")
-            time.sleep(10)
-            driver.find_element("xpath", '//*[@id=":2a"]').click()
-            time.sleep(10)
-            txt = driver.find_element("link text", 'Clic para gestionar tus anuncios')
-            url = txt.get_attribute("href")
-            driver.get(url)
-            time.sleep(10)
-            try:
-                driver.switch_to.alert
-                print("Alerta detectado, aceitando... - ", dt_string)
-                WebDriverWait(driver, 10).until(EC.alert_is_present())
-                driver.switch_to.alert.accept()
-            except NoAlertPresentException:
-                print("Sem presença de alerta, continuando... - ", dt_string)
-                
-            time.sleep(10)
-            driver.find_element("xpath", '//*[starts-with(@id,"btn")]/input').click()
-            time.sleep(10)
-            WebDriverWait(driver, 10).until(EC.alert_is_present())
-            driver.switch_to.alert.accept()
-            driver.find_element("xpath", '//*[@id="btnpublica"]').click()
-            driver.find_element("xpath", '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
-            driver.find_element("xpath", '//*[@id="frmALTA1"]/div[3]/input').send_keys(groupLink)
-            driver.find_element("xpath", '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
-            driver.find_element("xpath", '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys("arquimarsx@gmail.com")
-            driver.find_element("xpath", '//*[@id="frmALTA1"]/div[6]/div/input[2]').send_keys("arquimarsx@gmail.com")
-            driver.find_element("xpath", '//*[@id="descripcion"]').send_keys("Grupo para hacer amistades, parejas, stickers, y más... entra y desfruta!")
-            driver.find_element("xpath", '//*[@id="keys"]').send_keys("amistad, amigos, humor, memes, ciudad, argentina, colombia, peru, perú, mexico, méxico")
-            driver.find_element("xpath", '//*[@id="cat1"]').click()
-            driver.find_element("xpath", '//*[@id="cat1"]/option[2]').click()
-            driver.find_element("xpath", '//*[@id="cat2"]').click()
-            driver.find_element("xpath", '//*[@id="cat2"]/option[3]').click()
-            driver.find_element("xpath", '//*[@id="cat3"]').click()
-            driver.find_element("xpath", '//*[@id="cat3"]/option[4]').click()
-            driver.find_element("xpath", '//*[@id="privacidad"]').click()
-            driver.find_element("xpath", '//*[@id="frmALTA1"]/div[11]/div/a').click()
-            time.sleep(10)
-            driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
-            time.sleep(10)
-            driver.get("https://mail.google.com/mail/u/0/#inbox")
-            time.sleep(10)
-            driver.find_element("xpath", '//*[@id=":2c"]').click()
-            time.sleep(5)
-            driver.find_element("xpath", '//*[@id=":4"]/div/div[1]/div[1]/div/div/div[2]/div[3]').click()
-            time.sleep(5)
-            driver.find_element("xpath", '//*[@id=":ld"]').click()
-            driver.find_element("xpath", '//*[@id=":lu"]/div').click()
-            time.sleep(10)
-            driver.find_element("xpath", '//*[@id=":mz"]/div[1]/span').click()
-            driver.find_element("xpath", '//*[@id=":4"]/div[2]/div[2]/div[1]/div/div/div[2]/div/div').click()
-            driver.quit()
-            print("Automação concluída com sucesso! - ", dt_string)
-            time.sleep(3300)
-        except Exception as e: 
+            time.sleep(290)
+            with MailBox('imap.gmail.com').login(email, password) as mailbox:
+                for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
+                    time.sleep(10)
+                    if (msg.from_ != "info@gruposwats.com"):
+                        print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
+                        automate()
+                        
+                    body = msg.text or msg.html
+                    extractor = URLExtract()
+                    url = extractor.find_urls(body)
+                    first_url = url[0]
+                    print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
+                    driver.get(first_url)
+                    time.sleep(10)
+                    driver.find_element("xpath", '//*[starts-with(@id,"btn")]/input').click()
+                    time.sleep(10)
+                    WebDriverWait(driver, 10).until(EC.alert_is_present())
+                    driver.switch_to.alert.accept()
+                    driver.find_element("xpath", '//*[@id="btnpublica"]').click()
+                    driver.find_element("xpath", '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
+                    driver.find_element("xpath", '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
+                    driver.find_element("xpath", '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
+                    driver.find_element("xpath", '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys("arquimarsx@gmail.com")
+                    driver.find_element("xpath", '//*[@id="frmALTA1"]/div[6]/div/input[2]').send_keys("arquimarsx@gmail.com")
+                    driver.find_element("xpath", '//*[@id="descripcion"]').send_keys("Grupo para hacer amistades, parejas, stickers, y más... entra y desfruta!")
+                    driver.find_element("xpath", '//*[@id="keys"]').send_keys("amistad, amigos, humor, memes, ciudad, argentina, colombia, peru, perú, mexico, méxico")
+                    driver.find_element("xpath", '//*[@id="cat1"]').click()
+                    driver.find_element("xpath", '//*[@id="cat1"]/option[2]').click()
+                    driver.find_element("xpath", '//*[@id="cat2"]').click()
+                    driver.find_element("xpath", '//*[@id="cat2"]/option[3]').click()
+                    driver.find_element("xpath", '//*[@id="cat3"]').click()
+                    driver.find_element("xpath", '//*[@id="cat3"]/option[4]').click()
+                    driver.find_element("xpath", '//*[@id="privacidad"]').click()
+                    driver.find_element("xpath", '//*[@id="frmALTA1"]/div[11]/div/a').click()
+                    time.sleep(10)
+                    driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
+                    time.sleep(10)
+                    uids = []
+                    uids.append(msg.uid)
+                    mailbox.delete(uids)
+                    driver.quit()
+                    print("Automação concluída com sucesso! - ", dt_string)
+                    time.sleep(3300)
+        except Exception as e:
             print (e)
             automate()
-            
+
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -130,4 +95,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=10000)
