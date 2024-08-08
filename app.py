@@ -1,14 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, request
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
 import random
 from datetime import datetime
 
-app = Flask(__name__)
 email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
@@ -88,11 +86,4 @@ def automate():
             automate()
 
 
-@app.route('/', methods = ['GET', 'POST'])
-def home():
-    if(request.method == 'GET'):
-        return automate()
-
-
-if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+automate()
