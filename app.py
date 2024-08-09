@@ -74,7 +74,7 @@ def automate():
                 driver.find_element("xpath", '//*[@id="cat3"]/option[4]').click()
                 driver.find_element("xpath", '//*[@id="privacidad"]').click()
                 driver.find_element("xpath", '//*[@id="frmALTA1"]/div[11]/div/a').click()
-                time.sleep(10)
+                time.sleep(5)
                 driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
                 time.sleep(5)
                 uids = []
@@ -94,4 +94,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
