@@ -36,11 +36,10 @@ def automate():
             names = random.choice(group_names)
             print("Automação iniciada! - ", dt_string)
             driver.get("https://www.gruposwats.com")
-            time.sleep(10)
             driver.find_element("xpath", '//*[@id="btnpublica"]').click()
             driver.find_element("xpath", '//*[@id="myDiv3"]/span[6]').click()
             driver.find_element("xpath", '/html/body/div[2]/div/div[1]/button').click()
-            time.sleep(10)
+            driver.implicitly_wait(10)
             driver.find_element("xpath", '//*[@id="mailgrupo"]').click()
             driver.find_element("xpath", '//*[@id="mailgrupo"]').send_keys(email)
             driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
@@ -76,14 +75,14 @@ def automate():
                     driver.find_element("xpath", '//*[@id="cat3"]/option[4]').click()
                     driver.find_element("xpath", '//*[@id="privacidad"]').click()
                     driver.find_element("xpath", '//*[@id="frmALTA1"]/div[11]/div/a').click()
-                    time.sleep(10)
+                    driver.implicitly_wait(10)
                     driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
                     uids = []
                     uids.append(msg.uid)
                     mailbox.delete(uids)
                     driver.quit()
                     print("Automação concluída com sucesso! - ", dt_string)
-                    time.sleep(3300)
+                    driver.implicitly_wait(3300)
         except Exception as e:
             print (e)
             automate()
@@ -96,5 +95,3 @@ def index():
 
 if __name__ == '__main__':
     app.run()
-    
-    
