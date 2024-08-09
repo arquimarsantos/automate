@@ -56,7 +56,6 @@ def automate():
                     first_url = url[0]
                     print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                     driver.get(first_url)
-                    time.sleep(20)
                     driver.find_element("xpath", '//*[starts-with(@id,"btn")]/input').click()
                     time.sleep(10)
                     WebDriverWait(driver, 10).until(EC.alert_is_present())
