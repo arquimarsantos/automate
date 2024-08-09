@@ -12,7 +12,7 @@ app = Flask(__name__)
 email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
-group_link = "https://chat.whatsapp.com/KFxBPIgH2ad1Shi14KcJB2"
+group_link = "https://chat.whatsapp.com/BZ3YQdAR3TjKrgBtBbz7Lk"
 
 def automate():
     try:
