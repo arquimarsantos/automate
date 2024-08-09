@@ -13,6 +13,17 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/BZ3YQdAR3TjKrgBtBbz7Lk"
+PROXY = "164.152.240.226:3128"
+
+webdriver.DesiredCapabilities.CHROME['proxy'] = {
+    "httpProxy":PROXY,
+    "ftpProxy":PROXY,
+    "sslProxy":PROXY,
+    "noProxy": None,
+    "proxyType": "MANUAL",
+    "class": "org.openqa.selenium.Proxy",
+    "autodetect": False
+}
 
 def automate():
     try:
@@ -43,7 +54,6 @@ def automate():
         driver.find_element("xpath", '//*[@id="mailgrupo"]').send_keys(email)
         driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
         time.sleep(5)
-        driver.get("https://www.google.com")
         with MailBox('imap.gmail.com').login(email, password) as mailbox:
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                 if (msg.from_ != "info@gruposwats.com"):
