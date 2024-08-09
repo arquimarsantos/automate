@@ -82,7 +82,7 @@ def automate():
                     mailbox.delete(uids)
                     driver.quit()
                     print("Automação concluída com sucesso! - ", dt_string)                    
-                    time.sleep(10-time.time()%10)
+                    time.sleep(2400-time.time()%2400)
                     print("Reiniciando automação... - ", dt_string)
         except Exception as e:
             print (e)
