@@ -39,6 +39,8 @@ def automate():
             driver.find_element("xpath", '//*[@id="btnpublica"]').click()
             driver.find_element("xpath", '//*[@id="myDiv3"]/span[6]').click()
             driver.find_element("xpath", '/html/body/div[2]/div/div[1]/button').click()
+            time.sleep(10)
+            driver.find_element("xpath", '//*[@id="mailgrupo"]').click()
             driver.find_element("xpath", '//*[@id="mailgrupo"]').send_keys(email)
             driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
             time.sleep(5)
