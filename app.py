@@ -88,9 +88,10 @@ def automate():
             automate()
 
 
-@app.route('/')
+@app.route('/', methods = ['GET', 'POST'])
 def index():
-    return automate()
+    if (request.method == 'GET'):
+        return automate()
 
 
 if __name__ == '__main__':
