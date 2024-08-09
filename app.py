@@ -51,8 +51,7 @@ def automate():
                     time.sleep(10)
                     if (msg.from_ != "info@gruposwats.com"):
                         print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
-                        automate()
-                        
+                        automate()                        
                     body = msg.text or msg.html
                     extractor = URLExtract()
                     url = extractor.find_urls(body)
