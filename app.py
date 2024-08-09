@@ -47,7 +47,6 @@ def automate():
             driver.get("https://www.google.com")
             with MailBox('imap.gmail.com').login(email, password) as mailbox:
                 for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
-                    time.sleep(10)
                     if (msg.from_ != "info@gruposwats.com"):
                         print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
                         return automate()                        
