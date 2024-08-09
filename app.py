@@ -76,7 +76,7 @@ def automate():
                 driver.find_element("xpath", '//*[@id="frmALTA1"]/div[11]/div/a').click()
                 driver.implicitly_wait(10)
                 driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
-                time.sleep(5)
+                driver.implicitly_wait(5)
                 uids = []
                 uids.append(msg.uid)
                 mailbox.delete(uids)
@@ -94,4 +94,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
