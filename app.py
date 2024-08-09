@@ -81,9 +81,8 @@ def automate():
                     uids.append(msg.uid)
                     mailbox.delete(uids)
                     driver.quit()
-                    print("Automação concluída com sucesso! - ", dt_string)
-                    
-                    time.sleep(3600-time.time()%3600)
+                    print("Automação concluída com sucesso! - ", dt_string)                    
+                    time.sleep(10-time.time()%10)
                     print("Reiniciando automação... - ", dt_string)
         except Exception as e:
             print (e)
