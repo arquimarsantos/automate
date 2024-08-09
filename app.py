@@ -84,8 +84,9 @@ def automate():
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print (e)
+        time.sleep(5)
         automate()
-
+        
 
 @app.route('/')
 def index():
