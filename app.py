@@ -83,6 +83,7 @@ def automate():
                     driver.quit()
                     print("Automação concluída com sucesso! - ", dt_string)
                     time.sleep(3600-time.time()%3600)
+                    print("Reiniciando automação... - ", dt_string)
         except Exception as e:
             print (e)
             automate()
