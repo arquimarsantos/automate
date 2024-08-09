@@ -45,13 +45,12 @@ def automate():
             driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
             time.sleep(5)
             driver.get("https://www.google.com")
-            time.sleep(10)
             with MailBox('imap.gmail.com').login(email, password) as mailbox:
                 for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                     time.sleep(10)
                     if (msg.from_ != "info@gruposwats.com"):
                         print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
-                        automate()                        
+                        return automate()                        
                     body = msg.text or msg.html
                     extractor = URLExtract()
                     url = extractor.find_urls(body)
