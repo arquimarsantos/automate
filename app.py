@@ -15,7 +15,7 @@ group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTR
 group_link = "https://chat.whatsapp.com/KFxBPIgH2ad1Shi14KcJB2"
 
 def automate():
-    while True:
+    while False:
         try:
             options = webdriver.ChromeOptions()
             user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' 
@@ -82,8 +82,7 @@ def automate():
                     mailbox.delete(uids)
                     driver.quit()
                     print("Automação concluída com sucesso! - ", dt_string)                    
-                    time.sleep(900-time.time()%900)
-                    print("Reiniciando automação... - ", dt_string)
+                    time.sleep(10-time.time()%10)
         except Exception as e:
             print (e)
             automate()
