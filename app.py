@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, request
+from flask import Flask
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
@@ -86,10 +86,9 @@ def automate():
         automate()
 
 
-@app.route('/', methods = ['GET', 'POST'])
+@app.route('/')
 def index():
-    if (request.method == 'GET'):
-        return automate()
+    return automate()
 
 
 if __name__ == '__main__':
