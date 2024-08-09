@@ -38,7 +38,7 @@ def automate():
         driver.find_element("xpath", '//*[@id="btnpublica"]').click()
         driver.find_element("xpath", '//*[@id="myDiv3"]/span[6]').click()
         driver.find_element("xpath", '/html/body/div[2]/div/div[1]/button').click()
-        time.sleep(10)
+        driver.implicitly_wait(10)
         driver.find_element("xpath", '//*[@id="mailgrupo"]').click()
         driver.find_element("xpath", '//*[@id="mailgrupo"]').send_keys(email)
         driver.find_element("xpath", '//*[@id="FRMgest"]/button').click()
@@ -48,7 +48,7 @@ def automate():
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                 if (msg.from_ != "info@gruposwats.com"):
                     print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
-                    automate()                
+                    return automate()                
                 body = msg.text or msg.html
                 extractor = URLExtract()
                 url = extractor.find_urls(body)
