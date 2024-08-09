@@ -86,6 +86,7 @@ def automate():
         automate()
 
 
+
 @app.route('/')
 def home():
     return automate()
