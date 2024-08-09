@@ -79,7 +79,7 @@ def automate():
                 uids = []
                 uids.append(msg.uid)
                 mailbox.delete(uids)
-                driver.quit()
+                drive.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print (e)
