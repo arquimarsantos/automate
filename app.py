@@ -57,7 +57,6 @@ def automate():
                     print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                     driver.get(first_url)
                     driver.find_element("xpath", '//*[starts-with(@id,"btn")]/input').click()
-                    time.sleep(10)
                     WebDriverWait(driver, 10).until(EC.alert_is_present())
                     driver.switch_to.alert.accept()
                     driver.find_element("xpath", '//*[@id="btnpublica"]').click()
