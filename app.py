@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask, request
+from flask import Flask
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
@@ -78,7 +78,6 @@ def automate():
                 driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
                 uids = []
                 uids.append(msg.uid)
-                time.sleep(10)
                 mailbox.delete(uids)
                 drive.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
