@@ -78,6 +78,7 @@ def automate():
                 driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
                 uids = []
                 uids.append(msg.uid)
+                time.sleep(10)
                 mailbox.delete(uids)
                 drive.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
