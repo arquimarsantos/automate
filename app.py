@@ -55,6 +55,7 @@ def automate():
                     url = extractor.find_urls(body)
                     first_url = url[0]
                     print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
+                    time.sleep(10)
                     driver.get(first_url)
                     time.sleep(10)
                     driver.find_element("xpath", '//*[starts-with(@id,"btn")]/input').click()
