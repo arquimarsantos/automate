@@ -15,7 +15,7 @@ group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTR
 group_link = "https://chat.whatsapp.com/KFxBPIgH2ad1Shi14KcJB2"
 
 def automate():
-    while False:
+    while True:
         try:
             options = webdriver.ChromeOptions()
             user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' 
