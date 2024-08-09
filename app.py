@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from flask import Flask
+from flask import Flask, request
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
@@ -80,11 +80,11 @@ def automate():
                 uids = []
                 uids.append(msg.uid)
                 mailbox.delete(uids)
-                drive.quit()
+                driver.implicitly_wait(5)
+                driver.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
-        print (e)
-        time.sleep(5)
+        print(e)
         automate()
         
 
