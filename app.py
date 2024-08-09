@@ -13,17 +13,7 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/BZ3YQdAR3TjKrgBtBbz7Lk"
-PROXY = "164.152.240.226:3128"
-
-webdriver.DesiredCapabilities.CHROME['proxy'] = {
-    "httpProxy":PROXY,
-    "ftpProxy":PROXY,
-    "sslProxy":PROXY,
-    "noProxy": None,
-    "proxyType": "MANUAL",
-    "class": "org.openqa.selenium.Proxy",
-    "autodetect": False
-}
+proxy = "164.152.240.226:3128"
 
 def automate():
     try:
@@ -40,6 +30,7 @@ def automate():
         options.add_argument("--headless=new")
         options.add_argument("--start-maximized")
         options.add_argument("--window-size=1920,1080")
+        options.add_argument(f"--proxy-server={proxy}")
         driver = webdriver.Chrome(options=options)
         dtime = datetime.now()
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
