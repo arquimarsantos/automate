@@ -47,8 +47,8 @@ def automate():
         with MailBox('imap.gmail.com').login(email, password) as mailbox:
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                 if (msg.from_ != "info@gruposwats.com"):
-                print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
-                automate()                
+                    print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
+                    automate()                
                 body = msg.text or msg.html
                 extractor = URLExtract()
                 url = extractor.find_urls(body)
