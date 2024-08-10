@@ -60,6 +60,7 @@ def automate():
                 WebDriverWait(driver, 10).until(EC.alert_is_present())
                 driver.switch_to.alert.accept()
                 driver.find_element("xpath", '//*[@id="btnpublica"]').click()
+                time.sleep(10)
                 driver.find_element("xpath", '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
                 driver.find_element("xpath", '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
                 driver.find_element("xpath", '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
