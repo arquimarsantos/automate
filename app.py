@@ -13,7 +13,6 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/BZ3YQdAR3TjKrgBtBbz7Lk"
-proxy = "189.240.60.169:9090"
 
 def automate():
     try:
@@ -30,7 +29,6 @@ def automate():
         options.add_argument("--headless=new")
         options.add_argument("--start-maximized")
         options.add_argument("--window-size=1920,1080")
-        options.add_argument(f"--proxy-server={proxy}")
         driver = webdriver.Chrome(options=options)
         dtime = datetime.now()
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
