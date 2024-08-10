@@ -13,7 +13,7 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/BZ3YQdAR3TjKrgBtBbz7Lk"
-proxy = "189.240.60.169:9090"
+proxy = "187.111.144.102:8080"
 
 def automate():
     try:
