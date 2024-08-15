@@ -73,7 +73,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="cat3"]/option[4]').click()
         driver.find_element(By.XPATH, '//*[@id="privacidad"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
-        driver.implicitly_wait(10)
+        driver.implicitly_wait(20)
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/button[1]').click()
         driver.implicitly_wait(5)
         uids = []
