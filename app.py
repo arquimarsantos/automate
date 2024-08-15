@@ -54,6 +54,7 @@ def automate():
         br_button = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/ul[2]/li[8]/p')
         driver.implicitly_wait(5)
         ActionChains(driver).move_to_element(br_button).click(br_button).perform()        
+        driver.implicitly_wait(20)
         driver.get("https://www.gruposwats.com")
         driver.implicitly_wait(5)
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
