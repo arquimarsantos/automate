@@ -48,7 +48,7 @@ def automate():
         time.sleep(5)
         driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div/div[2]/button[2]').click()
         driver.get('chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html')
-        time.sleep(10)
+        driver.implicitly_wait(5)
         driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[1]/input').click()
         time.sleep(5)
         br_button = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/ul[2]/li[8]/p')
