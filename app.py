@@ -76,10 +76,6 @@ def automate():
         time.sleep(10)
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/button[1]').click()
         time.sleep(5)
-        uids = []
-        uids.append(msg.uid)
-        mailbox.delete(uids)
-        time.sleep(5)
         driver.quit()
         print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
