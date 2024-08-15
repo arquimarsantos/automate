@@ -56,6 +56,7 @@ def automate():
         ActionChains(driver).move_to_element(br_button).click(br_button).perform()
         driver.implicitly_wait(10)        
         driver.get("https://www.gruposwats.com")
+        driver.implicitly_wait(5)
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
