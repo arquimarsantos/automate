@@ -14,7 +14,7 @@ app = Flask(__name__)
 email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
-group_link = "https://chat.whatsapp.com/BZ3YQdAR3TjKrgBtBbz7Lk"
+group_link = "https://chat.whatsapp.com/EedDglqm1i1GzNrPrqYAYC"
 
 def automate():
     try:
@@ -75,7 +75,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="privacidad"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
         time.sleep(10)
-        driver.find_element("xpath", '//*[@id="frmALTA2"]/button[1]').click()
+        driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/button[1]').click()
         time.sleep(5)
         driver.quit()
         print("Automação concluída com sucesso! - ", dt_string)
