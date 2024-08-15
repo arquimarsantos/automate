@@ -48,14 +48,14 @@ def automate():
         time.sleep(5)
         driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div/div[2]/button[2]').click()
         driver.get('chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html')
-        driver.implicitly_wait(20)
+        time.sleep(10)
         driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[1]/input').click()
-        driver.implicitly_wait(5)
+        time.sleep(5)
         br_button = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/ul[2]/li[8]/p')
-        driver.implicitly_wait(5)
-        ActionChains(driver).move_to_element(br_button).click(br_button).perform()        
-        driver.implicitly_wait(30)
-        driver.get('https://gruposwats.com')
+        time.sleep(5)
+        ActionChains(driver).move_to_element(br_button).click(br_button).perform()
+        time.sleep(5)
+        driver.get("https://www.gruposwats.com")
         time.sleep(5)
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
@@ -73,13 +73,13 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="cat3"]/option[4]').click()
         driver.find_element(By.XPATH, '//*[@id="privacidad"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
-        driver.implicitly_wait(20)
+        time.sleep(10)
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/button[1]').click()
-        driver.implicitly_wait(5)
+        time.sleep(5)
         uids = []
         uids.append(msg.uid)
         mailbox.delete(uids)
-        driver.implicitly_wait(5)
+        time.sleep(5)
         driver.quit()
         print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
@@ -94,4 +94,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
