@@ -65,8 +65,11 @@ def automate():
         #time.sleep(10)
         with MailBox('imap.gmail.com').login(email, password) as mailbox:
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
+                uids = []
                 if (msg.from_ != "info@gruposwats.com"):
                     print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
+                    uids.append(msg.uid)
+                    mailbox.delete(uids)
                     return automate()
                     
                 body = msg.text or msg.html
@@ -79,6 +82,8 @@ def automate():
                 check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
                 state = "Estado: *** en revisión ***"
                 if state in check.text:
+                    uids.append(msg.uid)
+                    mailbox.delete(uids)
                     driver.quit()
                     return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)
                     
@@ -105,7 +110,6 @@ def automate():
                 time.sleep(10)
                 driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/button[1]').click()
                 time.sleep(5)
-                uids = []
                 uids.append(msg.uid)
                 mailbox.delete(uids)
                 driver.quit()
