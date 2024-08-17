@@ -62,7 +62,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').click()
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').send_keys(email)
         driver.find_element(By.XPATH, '//*[@id="FRMgest"]/button').click()
-        #time.sleep(10)
+        time.sleep(10)
         with MailBox('imap.gmail.com').login(email, password) as mailbox:
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                 uids = []
