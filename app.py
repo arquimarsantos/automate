@@ -113,15 +113,10 @@ def automate():
     except Exception as e:
         print(e)
         automate()
-        
-
-def loading():
-    return 'Carregando automação...'
 
 
 @app.route('/')
 def index():
-    loading()
     automate()
     return 'Automação concluída!'
 
