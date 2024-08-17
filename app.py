@@ -117,8 +117,9 @@ def automate():
 
 @app.route('/')
 def index():
+    'Carregando automação...'
     automate()
-    return 'Automação ativada!'
+    return 'Automação concluída!'
 
 
 if __name__ == '__main__':
