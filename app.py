@@ -115,9 +115,13 @@ def automate():
         automate()
         
 
+def loading():
+    return 'Carregando automação...'
+
+
 @app.route('/')
 def index():
-    'Carregando automação...'
+    loading()
     automate()
     return 'Automação concluída!'
 
