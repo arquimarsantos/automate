@@ -62,7 +62,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').click()
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').send_keys(email)
         driver.find_element(By.XPATH, '//*[@id="FRMgest"]/button').click()
-        time.sleep(5)
+        time.sleep(10)
         with MailBox('imap.gmail.com').login(email, password) as mailbox:
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                 if (msg.from_ != "info@gruposwats.com"):
@@ -76,12 +76,11 @@ def automate():
                 print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                 driver.get(first_url)
                 time.sleep(5)
-                check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
-                state = "Estado: *** en revisión ***"
-                if state in check.text:
-                    driver.quit()
-                    return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)
-                    
+                #check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
+                #state = "Estado: *** en revisión ***"
+                #if state in check.text:
+                    #driver.quit()
+                    #return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)                    
                 driver.find_element(By.XPATH, '//*[starts-with(@id,"btn")]/input').click()
                 time.sleep(5)
                 WebDriverWait(driver, 10).until(EC.alert_is_present())
