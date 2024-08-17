@@ -74,13 +74,15 @@ def automate():
                 url = extractor.find_urls(body)
                 first_url = url[0]
                 print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
+                time.sleep(5)
                 driver.get(first_url)
                 time.sleep(5)
-                #check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
-                #state = "Estado: *** en revisión ***"
-                #if state in check.text:
-                    #driver.quit()
-                    #return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)                    
+                check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
+                state = "Estado: *** en revisión ***"
+                if state in check.text:
+                    driver.quit()
+                    return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)
+                    
                 driver.find_element(By.XPATH, '//*[starts-with(@id,"btn")]/input').click()
                 time.sleep(5)
                 WebDriverWait(driver, 10).until(EC.alert_is_present())
@@ -111,7 +113,6 @@ def automate():
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
-        automate()
         
 
 @app.route('/')
