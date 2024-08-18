@@ -13,4 +13,4 @@ RUN apt-get update && apt-get install -y wget unzip && \
     apt install -y ./google-chrome-stable_current_amd64.deb && \
     apt-get clean
     
-CMD gunicorn app:app --timeout 60
+CMD gunicorn app:app --timeout 0
