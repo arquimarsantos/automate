@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from apscheduler.schedulers.background import BackgroundScheduler
 from selenium.webdriver.common.by import By
 from flask import Flask
 from imap_tools import MailBox
@@ -9,6 +10,13 @@ from urlextract import URLExtract
 import time
 import random
 from datetime import datetime
+
+def sensor():
+    print("Scheduler is alive!")
+
+sched = BackgroundScheduler(daemon=True)
+sched.add_job(sensor,'interval',minutes=5)
+sched.start()
 
 app = Flask(__name__)
 email = "arquimarsx@gmail.com"
@@ -62,7 +70,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').click()
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').send_keys(email)
         driver.find_element(By.XPATH, '//*[@id="FRMgest"]/button').click()
-        time.sleep(10)
+        #time.sleep(10)
         with MailBox('imap.gmail.com').login(email, password) as mailbox:
             for msg in mailbox.fetch(limit=1, reverse=True, mark_seen=True):
                 uids = []
