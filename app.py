@@ -14,14 +14,14 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
-proxy = "189.240.60.164:9090"
+#proxy = "189.240.60.164:9090"
 
 def automate():
     try:
         options = webdriver.ChromeOptions()
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' 
         options.add_argument(f'user-agent={user_agent}')
-        options.add_argument(f"--proxy-server={proxy}")
+        #options.add_argument(f"--proxy-server={proxy}")
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_argument('--ignore-certificate-errors')
