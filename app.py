@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from flask import Flask
 from imap_tools import MailBox
@@ -14,14 +15,13 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
-proxy = "189.240.60.164:9090"
 
 def automate():
     try:
         options = webdriver.ChromeOptions()
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' 
+        options.add_extension('urban.crx')
         options.add_argument(f'user-agent={user_agent}')
-        options.add_argument(f"--proxy-server={proxy}")
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_argument('--ignore-certificate-errors')
@@ -37,6 +37,23 @@ def automate():
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
+        driver.get('chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html#/welcome-consent')
+        time.sleep(5)
+        driver.switch_to.window(driver.window_handles[-1])
+        driver.close()
+        driver.switch_to.window(driver.window_handles[0])
+        time.sleep(5)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div/div/div[2]/button[2]').click()
+        time.sleep(5)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div/div[2]/button[2]').click()
+        driver.get('chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html')
+        time.sleep(10)
+        driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[1]/input').click()
+        time.sleep(5)
+        br_button = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/ul[2]/li[8]/p')
+        time.sleep(5)
+        ActionChains(driver).move_to_element(br_button).click(br_button).perform()
+        time.sleep(5)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
