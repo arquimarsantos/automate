@@ -84,7 +84,7 @@ def automate():
                 if state in check.text:
                     uids.append(msg.uid)
                     mailbox.delete(uids)
-                    #driver.quit()
+                    driver.quit()
                     return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)
                     
                 driver.find_element(By.XPATH, '//*[starts-with(@id,"btn")]/input').click()
@@ -112,7 +112,7 @@ def automate():
                 time.sleep(5)
                 uids.append(msg.uid)
                 mailbox.delete(uids)
-                #driver.quit()
+                driver.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
