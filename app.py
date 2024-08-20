@@ -19,13 +19,9 @@ group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        #user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' 
-        #options.add_argument(f'user-agent={user_agent}')
+        user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1' 
+        options.add_argument(f'user-agent={user_agent}')
         #options.add_argument(f"--proxy-server={proxy}")
-        mobile_emulation = {
-    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
-    "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19" }
-        options.add_experimental_option("mobileEmulation", mobile_emulation)
         #options.add_argument("--disable-blink-features=AutomationControlled")
         #options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_argument('--ignore-certificate-errors')
