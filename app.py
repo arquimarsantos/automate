@@ -31,7 +31,7 @@ def automate():
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--headless=new")
         options.add_argument("--start-maximized")
-        options.add_argument("--window-size=1920,1080")
+        #options.add_argument("--window-size=1920,1080")
         driver = webdriver.Chrome(options=options)
         dtime = datetime.now()
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
@@ -56,7 +56,7 @@ def automate():
                 body = msg.text or msg.html
                 extractor = URLExtract()
                 url = extractor.find_urls(body)
-                first_url = url[1]
+                first_url = url[0]
                 print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                 driver.get(first_url)
                 time.sleep(10)
