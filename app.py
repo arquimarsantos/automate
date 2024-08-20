@@ -51,16 +51,14 @@ def automate():
                 uids = []
                 if (msg.from_ != "info@gruposwats.com"):
                     print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
-                    uids.append(msg.uid)
-                    mailbox.delete(uids)
                     return automate()
                     
                 body = msg.text or msg.html
                 extractor = URLExtract()
                 url = extractor.find_urls(body)
+                time.sleep(5)
                 first_url = url[0]
                 print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
-                time.sleep(5)
                 driver.get(first_url)
                 time.sleep(10)
                 check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
