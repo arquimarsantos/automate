@@ -100,6 +100,7 @@ def automate():
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
+        automate()
         
 
 @app.route('/')
