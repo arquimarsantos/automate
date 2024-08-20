@@ -12,16 +12,16 @@ from datetime import datetime
 app = Flask(__name__)
 email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
-group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
+group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
-proxy = "189.240.60.164:9090"
+#proxy = "189.240.60.164:9090"
 
 def automate():
     try:
         options = webdriver.ChromeOptions()
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36' 
         options.add_argument(f'user-agent={user_agent}')
-        options.add_argument(f"--proxy-server={proxy}")
+        #options.add_argument(f"--proxy-server={proxy}")
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_argument('--ignore-certificate-errors')
@@ -59,7 +59,7 @@ def automate():
                 first_url = url[0]
                 print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                 driver.get(first_url)
-                #time.sleep(5)
+                #time.sleep(10)
                 check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
                 state = "Estado: *** en revisión ***"
                 if state in check.text:
@@ -97,7 +97,6 @@ def automate():
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
-        automate()
         
 
 @app.route('/')
