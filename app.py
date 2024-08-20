@@ -56,7 +56,6 @@ def automate():
                 body = msg.text or msg.html
                 extractor = URLExtract()
                 url = extractor.find_urls(body)
-                time.sleep(5)
                 first_url = url[0]
                 print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                 driver.get(first_url)
@@ -108,5 +107,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port="10000")
 
