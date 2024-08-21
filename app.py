@@ -19,9 +19,9 @@ group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        user_agent = 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36'
+        #user_agent = 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36'
         mobile_emulation = { "deviceName": "Nexus 5" }
-        options.add_argument(f'user-agent={user_agent}')
+        #options.add_argument(f'user-agent={user_agent}')
         #options.add_argument(f"--proxy-server={proxy}")
         #options.add_argument("--disable-blink-features=AutomationControlled")
         #options.add_experimental_option("excludeSwitches", ["enable-automation"])
