@@ -19,7 +19,8 @@ group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+        #user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'        
+        user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1'
         options.add_argument(f'user-agent={user_agent}')
         #options.add_argument(f"--proxy-server={proxy}")
         options.add_argument("--disable-blink-features=AutomationControlled")
@@ -38,7 +39,6 @@ def automate():
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
         driver.get("https://www.gruposwats.com")
-        #driver.add_cookie({'domain': '.gruposwats.com', 'expiry': 1750132573, 'httpOnly': False, 'name': 'Cookie_id2', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': '273552428b0c'})
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
@@ -56,12 +56,8 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="privacidad"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
         time.sleep(10)
-        driver.add_cookie({'domain': 'www.gruposwats.com', 'expiry': 1724304242, 'httpOnly': False, 'name': 'ISOCountry', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'BR'}, {'domain': '.gruposwats.com', 'expiry': 1724822642, 'httpOnly': False, 'name': 'ISOProxy', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'no'}, {'domain': '.gruposwats.com', 'expiry': 1750137842, 'httpOnly': False, 'name': 'Cookie_id2', 'path': '/', 'sameSite': 'Lax', 'secure': False, 'value': 'c2c73bffe5d2'})
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
         time.sleep(5)
-        driver.delete_cookie("ISOCountry")
-        driver.delete_cookie("ISOProxy")
-        driver.delete_cookie("Cookie_id2")
         driver.quit()
         print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
