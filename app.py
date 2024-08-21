@@ -10,7 +10,7 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "arquimarsx@gmail.com"
+email = "xarquis99@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
@@ -40,7 +40,7 @@ def automate():
         print("Automação iniciada! - ", dt_string)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entren todos")
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys("arquimarsx@gmail.com")
