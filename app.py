@@ -10,7 +10,7 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "xarquis99@gmail.com"
+email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES & STICKERS ENTREN', 'ENTRA BB', 'ENTREN GUAPOS', 'ENTRA AMOR TE ESPERO', 'VIRTUALITOS']
 group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
@@ -19,12 +19,13 @@ group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        #user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'        
-        user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1'
+        user_agent = 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Mobile Safari/537.36'
+        mobile_emulation = { "deviceName": "Nexus 5" }
         options.add_argument(f'user-agent={user_agent}')
         #options.add_argument(f"--proxy-server={proxy}")
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        #options.add_argument("--disable-blink-features=AutomationControlled")
+        #options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option("mobileEmulation", mobile_emulation)
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--disable-gpu')
@@ -40,7 +41,7 @@ def automate():
         print("Automação iniciada! - ", dt_string)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entren todos")
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
@@ -62,7 +63,6 @@ def automate():
         print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
-        automate()
         
 
 @app.route('/')
