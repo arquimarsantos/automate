@@ -10,7 +10,7 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "xarquis99@gmail.com"
+email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMOR Y AMISTAD', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
 group_link = "https://chat.whatsapp.com/IiCl4YhSt1qHduNAW7IWWZ"
