@@ -19,12 +19,10 @@ group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        #user_agent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1'
         mobile_emulation = {
    "deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },
    "userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
    "clientHints": {"platform": "Android", "mobile": True} }
-        #options.add_argument(f'user-agent={user_agent}')
         #options.add_argument(f"--proxy-server={proxy}")
         #options.add_argument("--disable-blink-features=AutomationControlled")
         #options.add_experimental_option("excludeSwitches", ["enable-automation"])
