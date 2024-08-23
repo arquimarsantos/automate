@@ -7,6 +7,7 @@ from flask import Flask
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
+import os
 import pickle
 import random
 from datetime import datetime
@@ -60,14 +61,13 @@ def automate():
         ActionChains(driver).move_to_element(br_button).click(br_button).perform()
         time.sleep(5)
         driver.get("https://www.gruposwats.com")
-        try:
+        fn = input("cookies.pkl")
+        if os.path.isfile(fn):
             cookies = pickle.load(open("cookies.pkl", "rb"))
             for cookie in cookies:
                 driver.add_cookie(cookie)
                 print("cookies salvos foram restaurados! - ", dt_string)
-        except (OSError, IOError) as e:
-            print(dt_string)
-            
+                
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
@@ -88,7 +88,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
         time.sleep(5)
         try:
-            print(dt_string)        
+            pickle.load(open("cookies.pkl", "rb"))
         except (OSError, IOError) as e:
             pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
             print("criando novos cookies no banco de dados... - ", dt_string)
