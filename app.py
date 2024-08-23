@@ -49,7 +49,8 @@ def automate():
                 driver.add_cookie(cookie)
                 print("cookies salvos foram restaurados! - ", dt_string)
         except (OSError, IOError) as e:
-            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))            
+            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+            
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
