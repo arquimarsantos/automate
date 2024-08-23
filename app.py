@@ -29,6 +29,7 @@ def automate():
         options.add_experimental_option("mobileEmulation", mobile_emulation)
         options.add_extension('urban.crx')
         options.add_argument(f'user-agent={user_agent}')
+        Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--disable-gpu')
@@ -66,8 +67,7 @@ def automate():
                 driver.add_cookie(cookie)
                 print("cookies salvos foram restaurados! - ", dt_string)
         except (OSError, IOError) as e:
-            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
-            print("criando novos cookies no banco de dados... - ", dt_string)
+            print(dt_string)
             
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
@@ -88,6 +88,12 @@ def automate():
         time.sleep(10)
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
         time.sleep(5)
+        try:
+            print(dt_string)        
+        except (OSError, IOError) as e:
+            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+            print("criando novos cookies no banco de dados... - ", dt_string)
+            
         driver.quit()
         print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
