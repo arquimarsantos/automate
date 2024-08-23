@@ -29,7 +29,6 @@ def automate():
         options.add_experimental_option("mobileEmulation", mobile_emulation)
         options.add_extension('urban.crx')
         options.add_argument(f'user-agent={user_agent}')
-        Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--disable-gpu')
