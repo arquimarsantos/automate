@@ -11,7 +11,7 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "xarquis99@gmail.com"
+email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMOR Y AMISTAD', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
 group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
@@ -24,7 +24,6 @@ def automate():
         #options.add_argument(f"--proxy-server={proxy}")
         #options.add_argument("--disable-blink-features=AutomationControlled")
         #options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_extension('urban.crx')
         options.add_experimental_option("mobileEmulation", mobile_emulation)
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--allow-running-insecure-content')
@@ -39,26 +38,9 @@ def automate():
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
-        driver.get('chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html#/welcome-consent')
-        time.sleep(5)
-        driver.switch_to.window(driver.window_handles[-1])
-        driver.close()
-        driver.switch_to.window(driver.window_handles[0])
-        time.sleep(5)
-        driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div/div/div[2]/button[2]').click()
-        time.sleep(5)
-        driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div/div[2]/button[2]').click()
-        driver.get('chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/popup/index.html')
-        time.sleep(10)
-        driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[1]/input').click()
-        time.sleep(5)
-        br_button = driver.find_element(By.XPATH,'//*[@id="app"]/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/div/ul[2]/li[8]/p')
-        time.sleep(5)
-        ActionChains(driver).move_to_element(br_button).click(br_button).perform()
-        time.sleep(5)
-        driver.get("https://www.gruposwats.com")
+        driver.get("https://www.gruposwats.com")        
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("ENTREN")
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Amistades y más")
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
@@ -76,6 +58,7 @@ def automate():
         time.sleep(10)
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
         time.sleep(5)
+        print(driver.get_cookies())
         driver.quit()
         print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
