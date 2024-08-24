@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-COPY . /urban.crx
+COPY . /proxy.crx
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
