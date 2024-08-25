@@ -12,9 +12,10 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-host = "200.174.198.86"
-port = "8888"
+host = "189.240.60.169"
+port = "9090"
 # 189.240.60.164:9090 mx
+# 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
 email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
@@ -24,7 +25,7 @@ group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        mobile_emulation = { "deviceName": "Nexus 7" }
+        mobile_emulation = { "deviceName": "Nexus 5" }
         #user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
         #options.add_argument(f'user-agent={user_agent}')
         options.add_extension('proxy.crx')
