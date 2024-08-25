@@ -54,7 +54,7 @@ def automate():
         driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
         time.sleep(15)
         driver.get("https://www.gruposwats.com")
-        #time.sleep(5)
+        time.sleep(5)
         try:
             cookies = pickle.load(open("cookies.pkl", "rb"))
             for cookie in cookies:
