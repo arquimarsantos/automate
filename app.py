@@ -12,8 +12,8 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-host = "177.23.176.58"
-port = "8080"
+host = "189.240.60.164"
+port = "9090"
 # 189.240.60.164:9090 mx
 # 200.174.198.86:8888 br
 # 177.23.176.58:8080 br
