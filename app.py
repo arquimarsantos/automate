@@ -12,12 +12,11 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-host = "20.83.26.240"
-port = "3128"
+host = "177.23.176.58"
+port = "8080"
 # 189.240.60.164:9090 mx
-# 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
-# 20.83.26.240:3128
+# 177.23.176.58:8080 br
 email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
