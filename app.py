@@ -27,13 +27,13 @@ group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        mobile_emulation = { "deviceName": "Nexus 7" }
+        #mobile_emulation = { "deviceName": "Nexus 7" }
         #user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
         #options.add_argument(f'user-agent={user_agent}')
         options.add_extension('proxy.crx')
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        options.add_experimental_option("mobileEmulation", mobile_emulation)
+        #options.add_experimental_option("mobileEmulation", mobile_emulation)
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--disable-gpu')
@@ -68,7 +68,7 @@ def automate():
             print("criando novos cookies no banco de dados... - ", dt_string)
                 
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Amistades")
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
