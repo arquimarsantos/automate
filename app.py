@@ -83,7 +83,7 @@ def automate():
         driver.find_element(By.XPATH, '//*[@id="cat3"]/option[4]').click()
         driver.find_element(By.XPATH, '//*[@id="privacidad"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
-        time.sleep(10)
+        time.sleep(20)
         driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
         time.sleep(5)
         driver.quit()
