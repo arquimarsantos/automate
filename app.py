@@ -67,6 +67,7 @@ def automate():
             pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
             print("criando novos cookies no banco de dados... - ", dt_string)
                 
+        time.sleep(20)
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Amistades")
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
