@@ -41,6 +41,15 @@ def automate():
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
         driver.get("https://www.gruposwats.com")
+        try:
+            cookies = pickle.load(open("cookies.pkl", "rb"))
+            for cookie in cookies:
+                driver.add_cookie(cookie)
+                print("cookies salvos foram restaurados! - ", dt_string)
+        except (OSError, IOError) as e:
+            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+            print("criando novos cookies no banco de dados... - ", dt_string)
+            
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Amistades")
         driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
