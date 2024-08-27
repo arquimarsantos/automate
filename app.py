@@ -43,7 +43,7 @@ def automate():
         print("Automação iniciada! - ", dt_string)
         driver.get("https://www.gruposwats.com")
         try:
-        cookies = pickle.load(open("cookies.pkl", "rb"))
+            cookies = pickle.load(open("cookies.pkl", "rb"))
             for cookie in cookies:
                 driver.add_cookie(cookie)
                 print("cookies salvos foram restaurados! - ", dt_string)
