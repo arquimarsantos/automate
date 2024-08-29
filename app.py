@@ -44,6 +44,7 @@ def automate():
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
+        time.sleep(5)
         driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/button').click()
         time.sleep(5)
         driver.find_element(By.XPATH, '//*[@id="mailgrupo"]').click()
