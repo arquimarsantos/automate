@@ -40,9 +40,38 @@ def automate():
         dtime = datetime.now()
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
-        driver.get('https://api.ipify.org/')
-        ip_address = driver.find_element(By.TAG_NAME, "body").text
-        print(ip_address)
+        print("Automação iniciada! - ", dt_string)
+        driver.get("https://www.gruposwats.com")
+        try:
+            cookies = pickle.load(open("cookies.pkl", "rb"))
+            for cookie in cookies:
+                driver.add_cookie(cookie)
+                print("cookies salvos foram restaurados! - ", dt_string)
+        except (OSError, IOError) as e:
+            pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+            print("criando novos cookies no banco de dados... - ", dt_string)
+            
+        driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Amistades")
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[2]').send_keys(email)
+        driver.find_element(By.XPATH, '//*[@id="descripcion"]').send_keys("Grupo para hacer amistades, parejas, stickers, y más... entra y desfruta!")
+        driver.find_element(By.XPATH, '//*[@id="keys"]').send_keys("amistad, amigos, humor, memes, ciudad, argentina, colombia, peru, perú, mexico, méxico")
+        driver.find_element(By.XPATH, '//*[@id="cat1"]').click()
+        driver.find_element(By.XPATH, '//*[@id="cat1"]/option[2]').click()
+        driver.find_element(By.XPATH, '//*[@id="cat2"]').click()
+        driver.find_element(By.XPATH, '//*[@id="cat2"]/option[3]').click()
+        driver.find_element(By.XPATH, '//*[@id="cat3"]').click()
+        driver.find_element(By.XPATH, '//*[@id="cat3"]/option[4]').click()
+        driver.find_element(By.XPATH, '//*[@id="privacidad"]').click()
+        driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
+        time.sleep(10)
+        driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
+        time.sleep(5)
+        driver.quit()
+        print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
         
