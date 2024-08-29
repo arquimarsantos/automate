@@ -4,6 +4,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from flask import Flask
+from flask import request
+from flask import jsonify
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
@@ -76,10 +78,12 @@ def automate():
         print(e)
         
 
-@app.route('/')
-def index():
-    automate()
-    return 'Automação ativada!'
+#@app.route('/')
+@app.route("/ip", methods=["GET"])
+def ip():
+    #automate()
+    #return 'Automação ativada!'
+    return jsonify({'ip': request.remote_addr})
 
 
 if __name__ == '__main__':
