@@ -41,7 +41,7 @@ def automate():
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
         driver.get('https://api.ipify.org/')
-        ip_address = navigator.driver.find_element(By.TAG_NAME, "body").text
+        ip_address = driver.find_element(By.TAG_NAME, "body").text
         print(ip_address)
     except Exception as e:
         print(e)
