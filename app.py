@@ -16,8 +16,8 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
 group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
-host = "74.119.144.60"
-port = "4145"
+#host = "74.119.144.60"
+#port = "4145"
 # 189.240.60.164:9090 mx
 # 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
@@ -29,12 +29,12 @@ def automate():
     try:
         options = webdriver.ChromeOptions()
         #mobile_emulation = { "deviceName": "iPhone X" }
-        #user_agent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"
-        #options.add_argument(f'user-agent={user_agent}')
+        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+        options.add_argument(f'user-agent={user_agent}')
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         #options.add_experimental_option("mobileEmulation", mobile_emulation)
-        options.add_extension('proxy.crx')
+        #options.add_extension('proxy.crx')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--ignore-ssl-errors=yes')
         options.add_argument('--ignore-certificate-errors')
@@ -45,25 +45,13 @@ def automate():
         options.add_argument("--user-data-dir=selenium")
         options.add_argument("--headless=new")
         options.add_argument("--start-maximized")
-        #options.add_argument("--window-size=1920,1080")
+        options.add_argument("--window-size=1920,1080")
         driver = webdriver.Chrome(options=options)
         dtime = datetime.now()
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
-        driver.get("chrome-extension://iejkjpdckomcjdhmkemlfdapjodcpgih/data/popup/popup.html")
-        time.sleep(5)
-        driver.find_element(By.XPATH,'/html/body/div/details[5]/summary').click()
-        #driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
-        protocol_bt = driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]')
-        ActionChains(driver).move_to_element(protocol_bt).click(protocol_bt).perform()
-        driver.find_element(By.XPATH,'//*[@id="http-host"]').send_keys(host)
-        driver.find_element(By.XPATH,'//*[@id="http-port"]').send_keys(port)
-        driver.find_element(By.XPATH,'//*[@id="single"]').click()
-        driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
-        time.sleep(15)
         driver.get("https://www.gruposwats.com")
-        time.sleep(5)
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
         time.sleep(5)
@@ -78,7 +66,6 @@ def automate():
         if state_account in check_account.text:
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
-            time.sleep(5)
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("aprueben mi grupo :(")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
@@ -162,5 +149,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=10000, debug=True)
 
