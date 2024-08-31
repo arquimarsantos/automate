@@ -29,7 +29,7 @@ def automate():
     try:
         options = webdriver.ChromeOptions()
         #mobile_emulation = { "deviceName": "iPhone X" }
-        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.50 Safari/537.36'
+        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
         options.add_argument(f'user-agent={user_agent}')
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -52,15 +52,23 @@ def automate():
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
         driver.get("chrome-extension://iejkjpdckomcjdhmkemlfdapjodcpgih/data/popup/popup.html")
+        print("55")
         time.sleep(5)
         driver.find_element(By.XPATH,'/html/body/div/details[5]/summary').click()
+        print("58")
         #driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
         protocol_bt = driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]')
+        print("61")
         ActionChains(driver).move_to_element(protocol_bt).click(protocol_bt).perform()
+        print("63")
         driver.find_element(By.XPATH,'//*[@id="http-host"]').send_keys(host)
+        print("65")
         driver.find_element(By.XPATH,'//*[@id="http-port"]').send_keys(port)
+        print("67")
         driver.find_element(By.XPATH,'//*[@id="single"]').click()
+        print("69")
         driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
+        print("71")
         time.sleep(15)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
