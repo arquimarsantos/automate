@@ -16,8 +16,8 @@ email = "arquimarsx@gmail.com"
 password = "szgcbdzxgjkzggbq"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
 group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
-host = "74.119.144.60"
-port = "4145"
+#host = "74.119.144.60"
+#port = "4145"
 # 189.240.60.164:9090 mx
 # 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
@@ -34,7 +34,6 @@ def automate():
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option("mobileEmulation", mobile_emulation)
-        options.add_extension('proxy.crx')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--ignore-ssl-errors=yes')
         options.add_argument('--ignore-certificate-errors')
@@ -51,17 +50,6 @@ def automate():
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
-        driver.get("chrome-extension://iejkjpdckomcjdhmkemlfdapjodcpgih/data/popup/popup.html")
-        time.sleep(5)
-        driver.find_element(By.XPATH,'/html/body/div/details[5]/summary').click()
-        #driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
-        protocol_bt = driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]')
-        ActionChains(driver).move_to_element(protocol_bt).click(protocol_bt).perform()
-        driver.find_element(By.XPATH,'//*[@id="http-host"]').send_keys(host)
-        driver.find_element(By.XPATH,'//*[@id="http-port"]').send_keys(port)
-        driver.find_element(By.XPATH,'//*[@id="single"]').click()
-        driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
-        time.sleep(15)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
@@ -161,5 +149,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(Host="0.0.0.0", Port=10000, Debug=true)
 
