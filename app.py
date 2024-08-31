@@ -149,5 +149,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(Host="0.0.0.0", Port=10000, Debug=true)
+    app.run(host="0.0.0.0", port=10000, debug=True)
 
