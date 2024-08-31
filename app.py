@@ -63,6 +63,7 @@ def automate():
         driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
         time.sleep(15)
         driver.get("https://www.gruposwats.com")
+        time.sleep(5)
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
         time.sleep(5)
@@ -77,6 +78,7 @@ def automate():
         if state_account in check_account.text:
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
+            time.sleep(5)
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("aprueben mi grupo :(")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
