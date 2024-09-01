@@ -26,7 +26,6 @@ def automate():
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         #options.add_experimental_option("mobileEmulation", mobile_emulation)
-        options.add_extension('proxy.crx')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--ignore-ssl-errors=yes')
         options.add_argument('--ignore-certificate-errors')
@@ -77,7 +76,6 @@ def automate():
             time.sleep(10)
             driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
             time.sleep(5)
-            driver.quit()
             return print("Automação concluída com sucesso! - ", dt_string)
         
         time.sleep(10)
@@ -128,7 +126,6 @@ def automate():
                 time.sleep(5)
                 uids.append(msg.uid)
                 mailbox.delete(uids)
-                driver.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
@@ -141,5 +138,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.run()
 
