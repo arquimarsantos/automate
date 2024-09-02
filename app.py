@@ -12,10 +12,20 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "arquimarsx@gmail.com"
-password = "szgcbdzxgjkzggbq"
+email = "laz15823@gmail.com"
+#password = "szgcbdzxgjkzggbq"
+password = "visdbhphohxhmxhj"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
-group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
+#group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
+group_link = "https://chat.whatsapp.com/EedDglqm1i1GzNrPrqYAYC"
+host = "74.119.144.60"
+port = "4145"
+# 189.240.60.164:9090 mx
+# 189.240.60.169:9090 mx
+# 200.174.198.86:8888 br
+# 172.233.155.25:1080 us socks5
+# 199.229.254.129:4145 us socks5
+# 74.119.144.60:4145 us socks5
 
 def automate():
     try:
@@ -26,6 +36,7 @@ def automate():
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         #options.add_experimental_option("mobileEmulation", mobile_emulation)
+        options.add_extension('proxy.crx')
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--ignore-ssl-errors=yes')
         options.add_argument('--ignore-certificate-errors')
@@ -42,6 +53,17 @@ def automate():
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
         names = random.choice(group_names)
         print("Automação iniciada! - ", dt_string)
+        driver.get("chrome-extension://iejkjpdckomcjdhmkemlfdapjodcpgih/data/popup/popup.html")
+        time.sleep(5)
+        driver.find_element(By.XPATH,'/html/body/div/details[5]/summary').click()
+        #driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
+        driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
+        host_bt = driver.find_element(By.XPATH,'//*[@id="http-host"]')
+        ActionChains(driver).move_to_element(host_bt).send_keys(host).perform()
+        driver.find_element(By.XPATH,'//*[@id="http-port"]').send_keys(port)
+        driver.find_element(By.XPATH,'//*[@id="single"]').click()
+        driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
+        time.sleep(15)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
@@ -58,7 +80,7 @@ def automate():
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("aprueben mi grupo :(")
+            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Join pls")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
@@ -76,6 +98,7 @@ def automate():
             time.sleep(10)
             driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
             time.sleep(5)
+            driver.quit()
             return print("Automação concluída com sucesso! - ", dt_string)
         
         time.sleep(10)
@@ -126,6 +149,7 @@ def automate():
                 time.sleep(5)
                 uids.append(msg.uid)
                 mailbox.delete(uids)
+                driver.quit()
                 print("Automação concluída com sucesso! - ", dt_string)
     except Exception as e:
         print(e)
