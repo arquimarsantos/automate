@@ -7,45 +7,42 @@ from flask import Flask
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
-#import pickle
 import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "arquimarsx@gmail.com"
-password = "szgcbdzxgjkzggbq"
-#password = "visdbhphohxhmxhj"
-group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO :)', 'VIRTUALITOS', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI :)', 'ENTREN ENTREN', 'VIRTUALITOS 2024']
-group_link = "https://chat.whatsapp.com/KbrxPxeqIDCHUUdYUoPJMG"
-#group_link = "https://chat.whatsapp.com/EedDglqm1i1GzNrPrqYAYC"
+email = "arquimardltr@gmail.com"
+#password = "szgcbdzxgjkzggbq"
+password = "visdbhphohxhmxhj"
+group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
+desc_names = ['grupo nuevo entren', 'amistades, stickers y más... entren', 'chatear, hacer amistades, parejas y otros!', 'grupo para entrar todos de sudamerica!', 'entren hagan amistades y disfruten!']
+group_link = "https://chat.whatsapp.com/GMlpZBn1pscEO78QQtYqy5"
 
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        #mobile_emulation = { "deviceName": "iPhone X" }
         user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
         options.add_argument(f'user-agent={user_agent}')
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        #options.add_experimental_option("mobileEmulation", mobile_emulation)
         options.add_argument('--allow-running-insecure-content')
         options.add_argument('--ignore-ssl-errors=yes')
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--disable-gpu')
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--profile-directory=Default")
-        options.add_argument("--user-data-dir=selenium")
         options.add_argument("--headless=new")
         options.add_argument("--start-maximized")
         options.add_argument("--window-size=1920,1080")
         driver = webdriver.Chrome(options=options)
         dtime = datetime.now()
         dt_string = dtime.strftime("%d/%m/%Y %H:%M:%S")
-        names = random.choice(group_names)
+        g_names = random.choice(group_names)
+        d_names = random.choice(desc_names)
         print("Automação iniciada! - ", dt_string)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
+        time.sleep(5)
         driver.find_element(By.XPATH, '//*[@id="myDiv3"]/span[6]').click()
         time.sleep(5)
         driver.find_element(By.XPATH, '/html/body/div[2]/div/div[1]/button').click()
@@ -60,13 +57,13 @@ def automate():
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
+            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(g_names)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[2]').send_keys(email)
-            driver.find_element(By.XPATH, '//*[@id="descripcion"]').send_keys("Amistades, chatear, parejas y todo más!")
-            driver.find_element(By.XPATH, '//*[@id="keys"]').send_keys("amistad, amigos, humor, memes")
+            driver.find_element(By.XPATH, '//*[@id="descripcion"]').send_keys(d_names)
+            driver.find_element(By.XPATH, '//*[@id="keys"]').send_keys("amistad, amigos, humor, memes, ciudad, argentina, colombia, peru, perú, mexico, méxico")
             driver.find_element(By.XPATH, '//*[@id="cat1"]').click()
             driver.find_element(By.XPATH, '//*[@id="cat1"]/option[2]').click()
             driver.find_element(By.XPATH, '//*[@id="cat2"]').click()
@@ -77,7 +74,6 @@ def automate():
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[11]/div/a').click()
             time.sleep(10)
             driver.find_element(By.XPATH, '//*[@id="frmALTA2"]/a[1]').click()
-            time.sleep(5)
             driver.quit()
             return print("Automação concluída com sucesso! - ", dt_string)
         
@@ -87,15 +83,17 @@ def automate():
                 uids = []
                 if (msg.from_ != "info@gruposwats.com"):
                     print("Email selecionado não é válido com a automação, reiniciando sistema... - ", dt_string)
+                    driver.quit()
                     return automate()
                     
                 body = msg.text or msg.html
                 extractor = URLExtract()
                 url = extractor.find_urls(body)
                 first_url = url[0]
-                print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
+                print("email: ", email, " foi aberto e lido com sucesso! - ", dt_string)
+                #print("==================================================\n\nDe: ", msg.from_, "\nPara: ", msg.to, "\nAssunto: ", msg.subject, "\nData: ", msg.date, "\nUID: ", msg.uid, "\n\nMensagem: \n\n", body)
                 driver.get(first_url)
-                #time.sleep(10)
+                time.sleep(5)
                 check = driver.find_element(By.XPATH, '/html/body/div[2]/div[1]/div[1]/div/div[1]/span[5]')
                 state = "Estado: *** en revisión ***"
                 if state in check.text:
@@ -103,18 +101,20 @@ def automate():
                     mailbox.delete(uids)
                     driver.quit()
                     return print("O grupo segue em revisão, por isso a automação será cancelada. - ", dt_string)
-                
+                    
                 driver.find_element(By.XPATH, '//*[starts-with(@id,"btn")]/input').click()
                 time.sleep(5)
                 WebDriverWait(driver, 10).until(EC.alert_is_present())
-                driver.switch_to.alert.accept()
+                driver.switch_to.alert.accept()                        
+                time.sleep(5)
                 driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-                driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(names)
+                time.sleep(5)
+                driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(g_names)
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[2]').send_keys(email)
-                driver.find_element(By.XPATH, '//*[@id="descripcion"]').send_keys("Grupo para hacer amistades, parejas, stickers, y más... entra y desfruta!")
+                driver.find_element(By.XPATH, '//*[@id="descripcion"]').send_keys(d_names)
                 driver.find_element(By.XPATH, '//*[@id="keys"]').send_keys("amistad, amigos, humor, memes, ciudad, argentina, colombia, peru, perú, mexico, méxico")
                 driver.find_element(By.XPATH, '//*[@id="cat1"]').click()
                 driver.find_element(By.XPATH, '//*[@id="cat1"]/option[2]').click()
