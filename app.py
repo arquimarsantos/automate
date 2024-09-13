@@ -57,7 +57,7 @@ def automate():
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entren grupo nuevo")
+            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entren reyes y reinas")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
