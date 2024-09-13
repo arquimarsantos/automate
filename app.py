@@ -11,7 +11,7 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "arquimarsx@gmail.com"
+email = "xarquis99@gmail.com"
 #password = "szgcbdzxgjkzggbq"
 password = "visdbhphohxhmxhj"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
@@ -57,7 +57,7 @@ def automate():
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("ENTREN GUAPOS")
+            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Join")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
