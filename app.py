@@ -16,7 +16,7 @@ email = "laz15823gmail.com"
 password = "visdbhphohxhmxhj"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
 desc_names = ['grupo nuevo entren', 'amistades, stickers y más... entren', 'chatear, hacer amistades, parejas y otros!', 'grupo para entrar todos de sudamerica!', 'entren hagan amistades y disfruten!']
-group_link = "https://chat.whatsapp.com/GMlpZBn1pscEO78QQtYqy5"
+group_link = "https://chat.whatsapp.com/C4fTvmlM5Rt4Z30XGRTNrk"
 
 def automate():
     try:
