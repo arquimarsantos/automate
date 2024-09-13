@@ -11,7 +11,7 @@ import random
 from datetime import datetime
 
 app = Flask(__name__)
-email = "xarquis99@gmail.com"
+email = "laz15823gmail.com"
 #password = "szgcbdzxgjkzggbq"
 password = "visdbhphohxhmxhj"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
@@ -142,5 +142,5 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8000, debug=True)
+    app.run()
 
