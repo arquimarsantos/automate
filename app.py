@@ -3,14 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
-from flask import Flask
+#from flask import Flask
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
 import random
 from datetime import datetime
 
-app = Flask(__name__)
+#app = Flask(__name__)
 email = "xarquis99gmail.com"
 #password = "szgcbdzxgjkzggbq"
 password = "visdbhphohxhmxhj"
@@ -137,12 +137,12 @@ def automate():
 
 automate()
 
-@app.route('/')
-def index():
-    automate()
-    return 'Automação ativada!'
+#@app.route('/')
+#def index():
+    #automate()
+    #return 'Automação ativada!'
 
 
-if __name__ == '__main__':
-    app.run()
+#if __name__ == '__main__':
+    #app.run()
 
