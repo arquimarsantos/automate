@@ -3,14 +3,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
-#from flask import Flask
+from flask import Flask
 from imap_tools import MailBox
 from urlextract import URLExtract
 import time
 import random
 from datetime import datetime
 
-#app = Flask(__name__)
+app = Flask(__name__)
 email = "arquimardltr@gmail.com"
 password = "wbtffcvesgyngzdr"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
@@ -20,7 +20,7 @@ group_link = "https://chat.whatsapp.com/C4fTvmlM5Rt4Z30XGRTNrk"
 def automate():
     try:
         options = webdriver.ChromeOptions()
-        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/0.0.0.0 Safari/537.36'
+        user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
         options.add_argument(f'user-agent={user_agent}')
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
@@ -56,7 +56,7 @@ def automate():
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entren amistades")
+            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entren grupo nuevo")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
@@ -108,7 +108,7 @@ def automate():
                 time.sleep(5)
                 driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
                 time.sleep(5)
-                driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Entra")
+                driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(g_names)
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
                 driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
@@ -134,14 +134,12 @@ def automate():
         print(e)
         
 
-automate()
-
-#@app.route('/')
-#def index():
-    #automate()
-    #return 'Automação ativada!'
+@app.route('/')
+def index():
+    automate()
+    return 'Automação ativada!'
 
 
-#if __name__ == '__main__':
-    #app.run()
+if __name__ == '__main__':
+    app.run()
 
