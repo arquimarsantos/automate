@@ -16,8 +16,8 @@ password = "wbtffcvesgyngzdr"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
 desc_names = ['grupo nuevo entren', 'amistades, stickers y más... entren', 'chatear, hacer amistades, parejas y otros!', 'grupo para entrar todos de sudamerica!', 'entren hagan amistades y disfruten!']
 group_link = "https://chat.whatsapp.com/C4fTvmlM5Rt4Z30XGRTNrk"
-host = "167.71.110.174"
-port = "8118"
+host = "199.229.254.129"
+port = "4145"
 # 189.240.60.164:9090 mx
 # 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
@@ -52,7 +52,7 @@ def automate():
         driver.get("chrome-extension://iejkjpdckomcjdhmkemlfdapjodcpgih/data/popup/popup.html")
         time.sleep(5)
         driver.find_element(By.XPATH,'/html/body/div/details[5]/summary').click()
-        #driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
+        driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
         driver.find_element(By.XPATH,'//*[@id="http-host"]').send_keys(host)
         driver.find_element(By.XPATH,'//*[@id="http-port"]').send_keys(port)
         driver.find_element(By.XPATH,'//*[@id="single"]').click()
@@ -75,7 +75,7 @@ def automate():
             print("Não foi encontrado conta criada para o email: ", email, "\npublicando um novo grupo... - ", dt_string)
             driver.get("https://www.gruposwats.com")
             driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
-            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys(g_names)
+            driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[2]/input').send_keys("Grupo nuevo entra")
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[3]/input').send_keys(group_link)
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[5]/div/input[2]').click()
             driver.find_element(By.XPATH, '//*[@id="frmALTA1"]/div[6]/div/input[1]').send_keys(email)
