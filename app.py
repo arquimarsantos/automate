@@ -16,7 +16,7 @@ password = "wbtffcvesgyngzdr"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
 desc_names = ['grupo nuevo entren', 'amistades, stickers y más... entren', 'chatear, hacer amistades, parejas y otros!', 'grupo para entrar todos de sudamerica!', 'entren hagan amistades y disfruten!']
 group_link = "https://chat.whatsapp.com/C4fTvmlM5Rt4Z30XGRTNrk"
-proxy = "199.229.254.129:4145"
+proxy = "167.71.110.174:8118"
 # 189.240.60.164:9090 mx
 # 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
