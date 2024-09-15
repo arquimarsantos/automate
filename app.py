@@ -16,7 +16,8 @@ password = "wbtffcvesgyngzdr"
 group_names = ['AMISTADES Y OTROS', 'ENTRA', 'ENTREN GUAPOS', 'ENTRA TE ESPERO', 'ENTRA ESTOY ABURRIDA', 'AMISTADES SUDAMERICA', 'ENTRA AMOR', 'ENTRA AQUI', 'ENTREN ENTREN', 'ENTRA Y GANA UN REGALO', 'CHISMEAR DE LA VIDA', 'CHISMEAR Y MÁS', 'Entren mis bros', 'Entren mis latinos', 'Estoy aburrida entren']
 desc_names = ['grupo nuevo entren', 'amistades, stickers y más... entren', 'chatear, hacer amistades, parejas y otros!', 'grupo para entrar todos de sudamerica!', 'entren hagan amistades y disfruten!']
 group_link = "https://chat.whatsapp.com/C4fTvmlM5Rt4Z30XGRTNrk"
-proxy = "167.71.110.174:8118"
+host = "74.119.144.60"
+port = "4145"
 # 189.240.60.164:9090 mx
 # 189.240.60.169:9090 mx
 # 200.174.198.86:8888 br
@@ -39,7 +40,7 @@ def automate():
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--headless=new")
-        options.add_argument(f"--proxy-server={proxy}")
+        options.add_extension('proxy.crx')
         options.add_argument("--start-maximized")
         options.add_argument("--window-size=1920,1080")
         driver = webdriver.Chrome(options=options)
@@ -48,6 +49,15 @@ def automate():
         g_names = random.choice(group_names)
         d_names = random.choice(desc_names)
         print("Automação iniciada! - ", dt_string)
+        driver.get("chrome-extension://iejkjpdckomcjdhmkemlfdapjodcpgih/data/popup/popup.html")
+        time.sleep(5)
+        driver.find_element(By.XPATH,'/html/body/div/details[5]/summary').click()
+        driver.find_element(By.XPATH,'//*[@id="socks5-scheme"]').click()
+        driver.find_element(By.XPATH,'//*[@id="http-host"]').send_keys(host)
+        driver.find_element(By.XPATH,'//*[@id="http-port"]').send_keys(port)
+        driver.find_element(By.XPATH,'//*[@id="single"]').click()
+        driver.find_element(By.XPATH,'/html/body/div/details[5]/table/tbody/tr[1]/td[1]').click()
+        time.sleep(12)
         driver.get("https://www.gruposwats.com")
         driver.find_element(By.XPATH, '//*[@id="btnpublica"]').click()
         time.sleep(5)
